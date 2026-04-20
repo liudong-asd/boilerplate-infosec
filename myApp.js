@@ -1,13 +1,20 @@
 const express = require('express');
 const helmet = require('helmet');
-
 const app = express();
 
+// 开启Helmet安全防护
 app.use(helmet());
 
+// 加一个根路由，不然访问会404
+app.get('/', (req, res) => {
+  res.send('Hello Helmet! 服务运行正常');
+});
 
-
-
+// 监听3000端口
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`服务器已启动，访问 http://localhost:${PORT}`);
+});
 
 
 
